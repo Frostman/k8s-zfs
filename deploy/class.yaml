@@ -1,0 +1,31 @@
+kind: StorageClass
+apiVersion: storage.k8s.io/v1
+metadata:
+  name: zfs-local
+provisioner: k8s-zfs.frq.me
+volumeBindingMode: WaitForFirstConsumer # if node info available it'll be set as node affinity for PV
+parameters:
+  parentDataset: "nas/kube" # mandatory
+  keepDataset: "true" # default
+  local: "true" # default is false
+  snapshotsEnabled: "true" # default
+  defaultSnapshots: "daily,weekly,monthly" # default
+allowedTopologies: # very important for local type to limit available nodes
+- matchLabelExpressions:
+  - key: kubernetes.io/hostname
+    values:
+    - nas.home
+---
+kind: StorageClass
+apiVersion: storage.k8s.io/v1
+metadata:
+  name: zfs-nfs
+provisioner: k8s-zfs.frq.me
+parameters:
+  parentDataset: "nas/kube" # mandatory
+  keepDataset: "true" # default
+  local: "false" # default
+  nfsServer: "10.42.100.10" # mandatory, default is empty
+  nfsOptions: "rw=@10.42.100.0/24" # default is on
+  snapshotsEnabled: "true" # default
+  defaultSnapshots: "daily,weekly,monthly" # default

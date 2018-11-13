@@ -1,0 +1,14 @@
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: test
+  annotations:
+    k8s-zfs.frq.me/dataset: custom-dataset-name
+    k8s-zfs.frq.me/snapshots: hourly
+spec:
+  storageClassName: "zfs-local"
+  accessModes:
+  - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Mi

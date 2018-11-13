@@ -1,0 +1,21 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: test
+spec:
+  containers:
+  - name: test
+    image: gcr.io/google_containers/busybox:1.24
+    command:
+    - "/bin/sh"
+    args:
+    - "-c"
+    - "echo $(date) >> /mnt/SUCCESS && exit 0 || exit 1"
+    volumeMounts:
+    - name: test
+      mountPath: "/mnt"
+  restartPolicy: "Never"
+  volumes:
+  - name: test
+    persistentVolumeClaim:
+      claimName: test
