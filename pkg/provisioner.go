@@ -49,7 +49,7 @@ func (p *zfsProvisioner) Provision(options controller.VolumeOptions) (*v1.Persis
 		return nil, errors.Wrapf(err, "error setting properties for zfs dataset %s", datasetFullName)
 	}
 
-	nodeAffinity := &v1.VolumeNodeAffinity{}
+	var nodeAffinity *v1.VolumeNodeAffinity
 	pvSource := v1.PersistentVolumeSource{}
 
 	if !cfg.Local {
@@ -65,14 +65,16 @@ func (p *zfsProvisioner) Provision(options controller.VolumeOptions) (*v1.Persis
 
 		// todo: evaluate if it should be mandatory for local=true
 		if node := options.SelectedNode.Name; node != "" {
-			nodeAffinity.Required = &v1.NodeSelector{
-				NodeSelectorTerms: []v1.NodeSelectorTerm{
-					{
-						MatchExpressions: []v1.NodeSelectorRequirement{
-							{
-								Key:      "kubernetes.io/hostname",
-								Operator: v1.NodeSelectorOpIn,
-								Values:   []string{node},
+			nodeAffinity = &v1.VolumeNodeAffinity{
+				Required: &v1.NodeSelector{
+					NodeSelectorTerms: []v1.NodeSelectorTerm{
+						{
+							MatchExpressions: []v1.NodeSelectorRequirement{
+								{
+									Key:      "kubernetes.io/hostname",
+									Operator: v1.NodeSelectorOpIn,
+									Values:   []string{node},
+								},
 							},
 						},
 					},

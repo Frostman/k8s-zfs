@@ -6,7 +6,7 @@ metadata:
     k8s-zfs.frq.me/dataset: custom-dataset-name
     k8s-zfs.frq.me/snapshots: hourly
 spec:
-  storageClassName: "zfs-local"
+  storageClassName: "zfs-nfs"
   accessModes:
   - ReadWriteMany
   resources:
