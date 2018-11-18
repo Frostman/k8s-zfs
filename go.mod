@@ -44,6 +44,7 @@ require (
 	golang.org/x/sync v0.0.0-20181108010431-42b317875d0f // indirect
 	golang.org/x/sys v0.0.0-20181107165924-66b7b1311ac8 // indirect
 	golang.org/x/time v0.0.0-20181108054448-85acf8d2951c // indirect
+	golang.org/x/tools v0.0.0-20181117154741-2ddaf7f79a09 // indirect
 	google.golang.org/appengine v1.3.0 // indirect
 	gopkg.in/inf.v0 v0.9.1 // indirect
 	k8s.io/api v0.0.0-20181110191121-a33c8200050f

@@ -1,14 +1,15 @@
 package pkg
 
 import (
-	"github.com/kubernetes-sigs/sig-storage-lib-external-provisioner/controller"
-	"github.com/mitchellh/mapstructure"
-	"github.com/pkg/errors"
-	"k8s.io/api/core/v1"
 	"reflect"
 	"regexp"
 	"strconv"
 	"strings"
+
+	"github.com/kubernetes-sigs/sig-storage-lib-external-provisioner/controller"
+	"github.com/mitchellh/mapstructure"
+	"github.com/pkg/errors"
+	"k8s.io/api/core/v1"
 )
 
 const (

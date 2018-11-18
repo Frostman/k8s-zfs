@@ -2,12 +2,13 @@ package pkg_test
 
 import (
 	"fmt"
+	"k8s-zfs/pkg"
+	"testing"
+
 	"github.com/kubernetes-sigs/sig-storage-lib-external-provisioner/controller"
 	"github.com/stretchr/testify/assert"
-	"k8s-zfs/pkg"
 	"k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
-	"testing"
 )
 
 var loadConfigTests = []struct {

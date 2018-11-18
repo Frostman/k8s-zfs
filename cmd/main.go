@@ -2,11 +2,12 @@ package main
 
 import (
 	"flag"
-	"go.uber.org/zap"
 	"k8s-zfs/pkg"
-	"k8s.io/client-go/tools/clientcmd"
 	"os"
 	"syscall"
+
+	"go.uber.org/zap"
+	"k8s.io/client-go/tools/clientcmd"
 
 	"github.com/kubernetes-sigs/sig-storage-lib-external-provisioner/controller"
 
